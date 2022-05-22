@@ -1,36 +1,25 @@
 package ru.yandex.dimas224;
 
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
         JFrame jFrame = MyFrame.getFrame();
-        JComponent jComponent = new MyComponent();
 
-        jFrame.add(jComponent);
-        jFrame.addMouseMotionListener(new MouseAdapter() {
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                MyComponent.setXCord(e.getX());
-                MyComponent.setYCord(e.getY());
-                jComponent.repaint();
-            }
-        });
+        JLabel jLabel = new JLabel("Label");
 
-//        JPanel jPanel = new JPanel();
-//        jFrame.add(jPanel);
+        JPanel jPanel = new JPanel();
+        jFrame.add(jPanel);
+        jPanel.add(jLabel);
 
-//        JButton jButton = new JButton("Submit");
-//        jPanel.add(jButton);
-//        jButton.addActionListener(new MyAction(jPanel));
+        JTextArea jTextArea = new JTextArea(5, 5);
+        jTextArea.setLineWrap(true);
+        JScrollPane jScrollPane = new JScrollPane(jTextArea);
+        jPanel.add(jScrollPane);
 
+        JTextField jTextField = new JTextField("Default value", 20);
+        jPanel.add(jTextField);
+        jPanel.revalidate();
 
-
-        //jFrame.add(MyButton.getButtonWithEventHandler(jFrame));
-        //jFrame.add(MyButton.getButton());
-        //jFrame.add(new MyFrame.MyComponent());
     }
 }
